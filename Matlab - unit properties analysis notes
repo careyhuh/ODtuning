@@ -1,0 +1,12 @@
+Matlab - unit properties analysis notes
+
+-first run:
+concatDataIncludeSpeed.m
+-save fig if you want (e.g., 000_concat.fig)
+
+-next run:
+analyzeUnitMaxMin.m (script analyzes unit properties like peak-trough width, amplitude and amplitude ratio)
+-save fig if you want (e.g., 000_unit_pt.fig)
+
+analyzeUnitISIetc.m (scrpt analyzes further properties like ISI, colors unit width points depending on ISI and generates ISI histograms)
+-save fig if you want (e.g., 000_unit_pt_2colors.fig, 000_unit_width_ISI.fig, 000_unit_ISI_10ms.fig)

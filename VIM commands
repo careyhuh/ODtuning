@@ -1,0 +1,5 @@
+start making commands:
+:(colon)
+
+command to parse header info:
+:%s/|/\r/g

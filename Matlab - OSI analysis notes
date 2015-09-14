@@ -1,0 +1,81 @@
+Analysis of a good cell (2014-11-26, 003-012)
+
+
+Some good things to know/check in future:
+-sequence of orientations/directions:
+0   1   2  3  4 5   6   7 (num of conditions according to Igor)
+180 135 90 45 0 315 270 225 (angle)
+
+-changed this later: 
+0   1   2  3   4    5   6   7 (num of conditions according to Igor)
+0   45  90 135 180  225 270 315 (angle)
+
+-also changed vis stim later:
+included gray screen at beginning (9 cond altogether)
+-diff pres times than before
+
+MATLAB
+
+1. import Igor data files into Matlab
+use Matlab script from Corbett:
+readIgor_withDigital2.m
+
+run script with:
+[data, digitalChannels, time] = readIgor_withDigital2();
+always creates array (num_channel+1) x num_samples x num_sweeps
+in my case: recording is in chan1 (rec), photodiode is in chan2 (dio), ball movement is in chan3 (ballx), ball movement is in chan4 (bally)
+
+% reduce number of dimensions so that it's usable:
+rec = squeeze(data(1, :, :));
+dio = squeeze(data(2, :, :));
+ballx = squeeze(data(3, :, :));
+bally = squeeze(data(4, :, :));
+
+% plot first sweep of data in all channels just to check:
+subplot(4,1,1);plot(rec(:,1),'r')
+subplot(4,1,2);plot(dio(:,1),'g')
+subplot(4,1,3);plot(ballx(:,1),'k')
+subplot(4,1,4);plot(bally(:,1),'k')
+% each row is sample; each column is sweep e.g., sw1 = rec(:,1);
+
+2. analyze orientation and direction selectivity
+use Matlab script from Corbett:
+computeOSI.m (actually use mine: computeOSI_modified.m using a command similar to below example)
+script calls 5 other functions
+script has been modified to also produce mean direction in degrees and mean phase vector length, and named:
+computeOSI_modified.m
+script produces orientation/direction selectivity plot (circular firing histogram)
+
+run computeOSI_modified.m with (example):
+[theta meanSpikes vm_mean subthreshold osi meanDirDeg vectorLength] = computeOSI_modified(rec, 10000, false, -30, 8, 5000, 25000, 30000, 40000);
+
+3. copy values into excel
+osi (circVariance)
+vectorLength
+save the circular plot
+
+4. get F1/F0 measure
+run findF1overF0.m with (example):
+modulationIndex = findF1overF0(rec, 10000, 1.66667, 5000, 25000, 30000, 40000, false, -30)
+
+5. copy value into excel
+modulationIndex
+save 2 generated plots (binnedPSTH and spectrum)
+
+6. plot OD tuning on a linear plot
+run plotODtuning.m
+save plot (OD_tuning)
+
+7. calculate OD measures
+run calculateODSI.m
+copy and paste printed values
+%TODO: need to fix code so that +/- pi/2 or pi are handled correctly
+
+
+
+
+
+
+
+
+
