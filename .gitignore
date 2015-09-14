@@ -1,0 +1,58 @@
+### Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+# Thumbnails
+._*
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+### R
+cache
+# History files
+.Rhistory 
+# RStudio
+.Rapp.history
+.RData
+# knitr cache files
+report_cache
+report_files
+# Example code in package build process
+*-Ex.R
+
+### linux
+.*
+!.gitignore
+!.gitattributes
+*~
+
+### matlab
+# Windows default autosave extension
+*.asv
+# OSX / *nix default autosave extension
+*.m~
+# Compiled MEX binaries (all platforms)
+*.mex*
+# Simulink Code Generation	
+slprj/
+
+### misc
+
+### Windows
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+# Folder config file
+Desktop.ini
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+### Vim
+.*.swp
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
